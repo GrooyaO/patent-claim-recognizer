@@ -7,9 +7,10 @@ function app() {
     fs.readFile('./public/claims.txt', 'utf8', (err, data) => {
         if (err) throw err
         const text = data
-        //array of claims that should be within claimColletion
+
         const claims = splitString(text)
 
+        //JSON string representing ClaimCollection
         const claimsJson = JSON.stringify(generateClaims(claims))
         console.log(claimsJson)
     })
@@ -28,6 +29,8 @@ function splitString(text: string): string[] {
     return arrOfClaims
 }
 
+//Execute given statement on each distinct claim
+//Returns array of objects
 function generateClaims(claims: string[]): ClaimCollection {
     const model = new ClaimCollection()
 
