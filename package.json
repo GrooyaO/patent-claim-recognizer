@@ -1,0 +1,10 @@
+{
+    "name": "patent-claim-recognizer",
+    "scripts": {
+        "start": "ts-node-dev src/app.ts"
+    },
+    "dependencies": {
+        "ts-node-dev": "^1.1.8",
+        "typescript": "^4.3.5"
+    }
+}
