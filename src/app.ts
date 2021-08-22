@@ -5,8 +5,8 @@ function app() {
     fs.readFile('./public/claims.txt', 'utf8', (err, data) => {
         if (err) throw err
         const text = data
-        splitString(text)
-        console.log(splitString(text).length)
+        //array of claims that should be within claimColletion
+        const claims = splitString(text)
     })
     console.log('Execute!')
 }
@@ -22,5 +22,7 @@ function splitString(text: string): string[] {
 
     return arrOfClaims
 }
+
+//iterate over array, take each claim and push it into claimCollection
 
 app()
