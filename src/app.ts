@@ -9,8 +9,9 @@ function app() {
         const text = data
         //array of claims that should be within claimColletion
         const claims = splitString(text)
-        generateClaims(claims)
-        console.log(JSON.stringify(generateClaims(claims)))
+
+        const claimsJson = JSON.stringify(generateClaims(claims))
+        console.log(claimsJson)
     })
     console.log('Execute!')
 }
@@ -32,7 +33,9 @@ function generateClaims(claims: string[]): ClaimCollection {
 
     let claimOrderNum = 1
     for (let claim of claims) {
-        model.addClaims(new Claim(claimOrderNum, claim))
+        model.addClaims(
+            new Claim(claimOrderNum, claim.replace(/(\r\n|\n|\r)/gm, ''))
+        )
         claimOrderNum++
     }
     return model
