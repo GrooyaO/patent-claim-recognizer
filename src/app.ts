@@ -9,15 +9,8 @@ function app() {
         const text = data
         //array of claims that should be within claimColletion
         const claims = splitString(text)
-
-        const model = new ClaimCollection()
-
-        let claimOrderNum = 1
-        for (let claim of claims) {
-            model.addClaims(new Claim(claimOrderNum, claim))
-            claimOrderNum++
-        }
-        console.log(model)
+        insertClaimsIntoCollection(claims)
+        console.log(insertClaimsIntoCollection(claims))
     })
     console.log('Execute!')
 }
@@ -32,6 +25,17 @@ function splitString(text: string): string[] {
     const arrOfClaims = text.split(/\n\d{1,}\./)
 
     return arrOfClaims
+}
+
+function insertClaimsIntoCollection(claims: string[]): ClaimCollection {
+    const model = new ClaimCollection()
+
+    let claimOrderNum = 1
+    for (let claim of claims) {
+        model.addClaims(new Claim(claimOrderNum, claim))
+        claimOrderNum++
+    }
+    return model
 }
 
 app()
