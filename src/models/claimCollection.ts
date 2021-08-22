@@ -6,6 +6,10 @@ class ClaimCollection {
     constructor() {
         this.claims = []
     }
+
+    addClaims(claim: Claim) {
+        this.claims.push(claim)
+    }
 }
 
 export { ClaimCollection }

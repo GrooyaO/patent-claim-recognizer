@@ -1,4 +1,6 @@
 import * as fs from 'fs'
+import { ClaimCollection } from './models/claimCollection'
+import { Claim } from './models/claim'
 
 function app() {
     // Transform text file into string
@@ -7,6 +9,15 @@ function app() {
         const text = data
         //array of claims that should be within claimColletion
         const claims = splitString(text)
+
+        const model = new ClaimCollection()
+
+        let claimOrderNum = 1
+        for (let claim of claims) {
+            model.addClaims(new Claim(claimOrderNum, claim))
+            claimOrderNum++
+        }
+        console.log(model)
     })
     console.log('Execute!')
 }
@@ -22,7 +33,5 @@ function splitString(text: string): string[] {
 
     return arrOfClaims
 }
-
-//iterate over array, take each claim and push it into claimCollection
 
 app()
