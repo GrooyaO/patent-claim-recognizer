@@ -9,8 +9,8 @@ function app() {
         const text = data
         //array of claims that should be within claimColletion
         const claims = splitString(text)
-        insertClaimsIntoCollection(claims)
-        console.log(insertClaimsIntoCollection(claims))
+        generateClaims(claims)
+        console.log(JSON.stringify(generateClaims(claims)))
     })
     console.log('Execute!')
 }
@@ -27,7 +27,7 @@ function splitString(text: string): string[] {
     return arrOfClaims
 }
 
-function insertClaimsIntoCollection(claims: string[]): ClaimCollection {
+function generateClaims(claims: string[]): ClaimCollection {
     const model = new ClaimCollection()
 
     let claimOrderNum = 1
