@@ -1,20 +1,17 @@
-import * as fs from 'fs'
 import { ClaimCollection } from './models/claimCollection'
 import { Claim } from './models/claim'
+import FileReader from './FileReader'
 
 function app() {
-    // Transform text file into string
-    fs.readFile('./public/claims.txt', 'utf8', (err, data) => {
-        if (err) throw err
-        const text = data
+    const fileReader = new FileReader()
 
-        const claims = splitString(text)
+    const fileText = fileReader.read('./public/claims.txt')
 
-        //JSON string representing ClaimCollection
-        const claimsJson = JSON.stringify(generateClaims(claims))
-        console.log(claimsJson)
-    })
-    console.log('Execute!')
+    const claims = splitString(fileText)
+
+    //JSON string representing ClaimCollection
+    const claimsJson = JSON.stringify(generateClaims(claims))
+    console.log(claimsJson)
 }
 
 //Split string against pattern
@@ -25,7 +22,7 @@ function splitString(text: string): string[] {
     }
 
     const arrOfClaims = text.split(/\n\d{1,}\./)
-
+    //console.log(arrOfClaims)
     return arrOfClaims
 }
 
