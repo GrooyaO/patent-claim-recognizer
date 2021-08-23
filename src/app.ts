@@ -9,7 +9,9 @@ function app() {
     const textParserService = new TextParser()
 
     const fetchableFormat = JSON.stringify(
-        textParserService.parseClaims(fileText)
+        textParserService.parseClaims(fileText),
+        null,
+        '\t'
     )
 
     console.log(fetchableFormat)
