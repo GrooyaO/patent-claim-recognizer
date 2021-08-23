@@ -20,5 +20,5 @@ npm start
 
 ## Issues/Improvements to be made
 
-Currently returned JSON is not valid.
-Split code into more independant chunks for better readabilty and separation of concerns.
+-   Currently returned JSON is not valid.
+-   Split code into more independant chunks for better readabilty and separation of concerns.
