@@ -1,6 +1,6 @@
 # patent-claim-recognizer
 
-Claim parser program capable of reading text file and recognizing the format of claims by matching against pattern and exposing them in 'fetchable' (JSON) format.
+Claim parser program capable of reading text file and recognizing the format of claims by matching against pattern and displaying them in 'fetchable' (JSON) format.
 
 ## Installation
 
@@ -18,7 +18,6 @@ Start the project by running the following command:
 npm start
 ```
 
-## Issues/Improvements to be made
+## Issues
 
 -   Currently returned JSON is not valid.
--   Split code into more independant chunks for better readabilty and separation of concerns.

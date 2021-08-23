@@ -20,7 +20,7 @@ export default class TextParser implements ITextParser {
     //Split string against pattern
     //Returns new array of strings
     private splitString(text: string): string[] {
-        const arrOfClaims = text.split(/\n\d{1,}\./)
+        const arrOfClaims = text.split(/\n\d{1,}\.\s/)
 
         return arrOfClaims
     }
