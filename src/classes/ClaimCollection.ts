@@ -1,6 +1,6 @@
-import { Claim } from './claim'
+import Claim from './Claim'
 
-class ClaimCollection {
+export default class ClaimCollection {
     claims: Claim[]
 
     constructor() {
@@ -11,5 +11,3 @@ class ClaimCollection {
         this.claims.push(claim)
     }
 }
-
-export { ClaimCollection }

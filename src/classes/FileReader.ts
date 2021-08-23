@@ -1,5 +1,5 @@
 import fs from 'fs'
-import IFileReader from './interfaces/IFileReader'
+import IFileReader from '../interfaces/IFileReader'
 
 export default class FileReader implements IFileReader {
     public read(filePath: string): string {

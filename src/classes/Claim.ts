@@ -1,4 +1,4 @@
-class Claim {
+export default class Claim {
     order: number
     body: string
 
@@ -7,5 +7,3 @@ class Claim {
         this.body = body
     }
 }
-
-export { Claim }
