@@ -20,7 +20,7 @@ export default class TextParser implements ITextParser {
     //Split string against pattern
     //Returns new array of strings
     private splitString(text: string): string[] {
-        const arrOfClaims = text.split(/\n\d{1,}\.\s/)
+        const arrOfClaims = text.replace(/\d{1,}\.\s/, '').split(/\n\d{1,}\.\s/)
 
         return arrOfClaims
     }
@@ -35,9 +35,9 @@ export default class TextParser implements ITextParser {
 
         for (let claim of claims) {
             collection.addClaims(
-                new Claim(claimOrderNum, claim.replace(/(\r\n|\n|\r)/gm, ''))
+                new Claim(claimOrderNum, claim.replace(/(\r\n|\n|\r|)/gm, ''))
             )
+            claimOrderNum++
         }
-        claimOrderNum++
     }
 }
