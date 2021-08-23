@@ -17,7 +17,3 @@ Start the project by running the following command:
 ```bash
 npm start
 ```
-
-## Issues
-
--   Currently returned JSON is not valid.
