@@ -32,12 +32,18 @@ export default class TextParser implements ITextParser {
         claims: string[]
     ): void {
         let claimOrderNum = 1
-
         for (let claim of claims) {
-            collection.addClaims(
-                new Claim(claimOrderNum, claim.replace(/(\r\n|\n|\r|)/gm, ''))
-            )
+            const body = claim.replace(/(\r\n|\n|\r|)/gm, '')
+
+            collection.addClaims(new Claim(claimOrderNum, body, []))
             claimOrderNum++
+        }
+        for (let collectedClaim of collection.claims) {
+            for (let claim of claims) {
+                if (claim.indexOf(`claim ${collectedClaim.order},`) !== -1) {
+                    collectedClaim.subClaims.push(claim)
+                }
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-import fs from 'fs'
+import * as fs from 'fs'
 import IFileReader from '../interfaces/IFileReader'
 
 export default class FileReader implements IFileReader {
