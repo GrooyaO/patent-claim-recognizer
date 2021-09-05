@@ -49,5 +49,15 @@ export default class TextParser implements ITextParser {
             }
             orderNum = 1
         }
+        this.replaceClaims(collection)
+    }
+    private replaceClaims(collection: ClaimCollection) {
+        for (let collectedClaim of collection.claims) {
+            for (let subClaims of collectedClaim.subClaims) {
+                const index = collectedClaim.subClaims.indexOf(subClaims)
+                const c = subClaims.getClaim(subClaims.order, collection)
+                collectedClaim.subClaims[index] = c
+            }
+        }
     }
 }
