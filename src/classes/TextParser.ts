@@ -32,6 +32,7 @@ export default class TextParser implements ITextParser {
         claims: string[]
     ): void {
         let claimOrderNum = 1
+        let orderNum = 1
         for (let claim of claims) {
             const body = claim.replace(/(\r\n|\n|\r|)/gm, '')
 
@@ -41,9 +42,12 @@ export default class TextParser implements ITextParser {
         for (let collectedClaim of collection.claims) {
             for (let claim of claims) {
                 if (claim.indexOf(`claim ${collectedClaim.order},`) !== -1) {
-                    collectedClaim.subClaims.push(claim)
+                    const body = claim.replace(/(\r\n|\n|\r|)/gm, '')
+                    collectedClaim.subClaims.push(new Claim(orderNum, body, []))
                 }
+                orderNum++
             }
+            orderNum = 1
         }
     }
 }
